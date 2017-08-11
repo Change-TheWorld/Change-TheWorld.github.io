@@ -1,0 +1,1939 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="cBA5WQtmxnfGeCa7Oaly8Y1EWn31jDyZ0ROEL2AEqwg" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="AngularJS, 前端框架, 学习记录" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="风满楼的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="断剑重铸之日，骑士归来之时！   — 向着自由，向着未来出发Aco (๑╹◡╹)ﾉ”””     AnjularJS AngularJS 通过新的属性和表达式扩展了 HTML。AngularJS 可以构建一个单一页面应用程序（SPAs：Single Page Applications）。  基础 ng-app=” “  定义angularJS的使用范围；指令告诉 AngularJS，&amp;lt;di">
+<meta name="keywords" content="AngularJS, 前端框架, 学习记录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AngularJS浅谈">
+<meta property="og:url" content="http://www.taoxiaolin.com/2017/06/26/AngularJS浅谈/index.html">
+<meta property="og:site_name" content="风满楼的博客">
+<meta property="og:description" content="断剑重铸之日，骑士归来之时！   — 向着自由，向着未来出发Aco (๑╹◡╹)ﾉ”””     AnjularJS AngularJS 通过新的属性和表达式扩展了 HTML。AngularJS 可以构建一个单一页面应用程序（SPAs：Single Page Applications）。  基础 ng-app=” “  定义angularJS的使用范围；指令告诉 AngularJS，&amp;lt;di">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-07-26T19:12:40.085Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AngularJS浅谈">
+<meta name="twitter:description" content="断剑重铸之日，骑士归来之时！   — 向着自由，向着未来出发Aco (๑╹◡╹)ﾉ”””     AnjularJS AngularJS 通过新的属性和表达式扩展了 HTML。AngularJS 可以构建一个单一页面应用程序（SPAs：Single Page Applications）。  基础 ng-app=” “  定义angularJS的使用范围；指令告诉 AngularJS，&amp;lt;di">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.taoxiaolin.com/2017/06/26/AngularJS浅谈/"/>
+
+
+
+
+
+  <!-- Hotjar Tracking Code for www.taoxiaolin.com -->
+<script>
+	(function(h,o,t,j,a,r){
+		h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+		h._hjSettings={hjid:579135,hjsv:5};
+		a=o.getElementsByTagName('head')[0];
+		r=o.createElement('script');r.async=1;
+		r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+		a.appendChild(r);
+	})(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+  <title>AngularJS浅谈 | 风满楼的博客</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-101594740-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?fa1fd1b060fe6d934886c64d0a0f1527";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=61060154";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1262738828&web_id=1262738828" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">风满楼的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">不要忘了你的梦想 | 机会有很多，然而，她只会青睐有实力的人</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-front">
+          <a href="/categories/front/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-desktop"></i> <br />
+            
+            前端开发
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-study-materials">
+          <a href="/categories/study-materials/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-list"></i> <br />
+            
+            学习资料
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-reading">
+          <a href="/categories/reading/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            读书笔记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-experience">
+          <a href="/categories/experience/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />
+            
+            经验分享
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/categories/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-smile-o"></i> <br />
+            
+            生活
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-pictures">
+          <a href="/categories/pictures/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-camera-retro"></i> <br />
+            
+            摄影展
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-leaf">
+          <a href="/leaf/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-comments"></i> <br />
+            
+            留言板
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.taoxiaolin.com/2017/06/26/AngularJS浅谈/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aco">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风满楼的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">AngularJS浅谈</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-26T09:40:33+08:00">
+                2017-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/front/" itemprop="url" rel="index">
+                    <span itemprop="name">front</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/06/26/AngularJS浅谈/" class="leancloud_visitors" data-flag-title="AngularJS浅谈">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-fire"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数(热度) </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  4,448
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  18
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>断剑重铸之日，骑士归来之时！   — 向着自由，向着未来出发Aco (๑╹◡╹)ﾉ”””</p>
+</blockquote>
+<hr>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=28949843&auto=0&height=66"></iframe>
+
+<h1 id="AnjularJS"><a href="#AnjularJS" class="headerlink" title="AnjularJS"></a>AnjularJS</h1><blockquote>
+<p>AngularJS 通过新的属性和表达式扩展了 HTML。<br>AngularJS 可以构建一个单一页面应用程序（SPAs：Single Page Applications）。</p>
+</blockquote>
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><ol>
+<li>ng-app=” “  定义angularJS的使用范围；指令告诉 AngularJS，<code>&lt;div&gt;</code> 元素是 AngularJS 应用程序 的 <strong>“所有者”</strong>。一个网页可以包含多个运行在不同元素中的 AngularJS 应用程序。</li>
+<li>ng-init=”变量=值;变量=’值’”  初始化变量的值，有多个变量时，中间用分号隔开；</li>
+<li>ng-model=”变量”  定义变量名；</li>
+<li>ng-bind=”变量”  绑定变量名，获取该变量的数据。这里的变量就是第3条的变量名。但是一般都用双重花括号来获取变量的值 。</li>
+<li>AngularJS 表达式写在双大括号内。AngularJS 表达式 很像 JavaScript 表达式：它们可以包含文字、运算符和变量。</li>
+</ol>
+<a id="more"></a>
+<blockquote>
+<p>AngularJS 是一个 JavaScript 框架。它可通过 <code>&lt;script&gt;</code> 标签添加到 HTML 页面。<br>AngularJS 通过 <strong><code>指令</code></strong> 扩展了 HTML，且通过 <strong><code>表达式</code></strong> 绑定数据到 HTML。</p>
+</blockquote>
+<p>AngularJS 使得开发现代的单一页面应用程序（SPAs：Single Page Applications）变得更加容易。</p>
+<ol>
+<li>AngularJS 把应用程序数据绑定到 HTML 元素。</li>
+<li>AngularJS 可以克隆和重复 HTML 元素。</li>
+<li>AngularJS 可以隐藏和显示 HTML 元素。</li>
+<li>AngularJS 可以在 HTML 元素”背后”添加代码。</li>
+<li>AngularJS 支持输入验证。</li>
+</ol>
+<h2 id="AngularJS-应用"><a href="#AngularJS-应用" class="headerlink" title="AngularJS 应用"></a>AngularJS 应用</h2><ol>
+<li>AngularJS 模块（Module） 定义了 AngularJS 应用。</li>
+<li>AngularJS 控制器（Controller） 用于控制 AngularJS 应用。</li>
+<li><code>ng-app</code>指令定义了应用, <code>ng-controller</code> 定义了控制器。</li>
+</ol>
+<blockquote>
+<p>提示：使用 <code>ng-init</code> 不是很常见</p>
+</blockquote>
+<h3 id="AngularJS-表达式-与-JavaScript-表达式"><a href="#AngularJS-表达式-与-JavaScript-表达式" class="headerlink" title="AngularJS 表达式 与 JavaScript 表达式"></a>AngularJS 表达式 与 JavaScript 表达式</h3><p>类似于 JavaScript 表达式，AngularJS 表达式可以包含字母，操作符，变量。</p>
+<ol>
+<li>与 JavaScript 表达式不同，AngularJS 表达式可以写在 HTML 中。</li>
+<li>与 JavaScript 表达式不同，AngularJS 表达式不支持条件判断，循环及异常。</li>
+<li>与 JavaScript 表达式不同，AngularJS 表达式支持过滤器。</li>
+</ol>
+<blockquote>
+<p>AngularJS 完美支持数据库的 CRUD（<strong>增加 Create 、读取 Read 、更新 Update、删除 Delete </strong>）应用程序。<strong>把实例中的对象想象成数据库中的记录。</strong></p>
+</blockquote>
+<h3 id="ng-model-指令"><a href="#ng-model-指令" class="headerlink" title="ng-model 指令"></a>ng-model 指令</h3><p>ng-model 指令 绑定 HTML 元素 到应用程序数据。</p>
+<p>ng-model 指令也可以：</p>
+<ol>
+<li>为应用程序数据提供类型验证（number、email、required）。</li>
+<li>为应用程序数据提供状态（invalid、dirty、touched、error）。</li>
+<li>为 HTML 元素提供 CSS 类。</li>
+<li>绑定 HTML 元素到 HTML 表单。</li>
+</ol>
+<p>注意： </p>
+<pre><code>1. ng-model 是用于表单元素的，支持 **双向绑定** 。对普通元素无效；
+2. ng-bind 用于普通元素，不能用于表单元素，应用程序单向地渲染数据到元素；
+3. 当 ng-bind 和 `双重大括号` 同时使用时，ng-bind 绑定的值覆盖该元素的内容。
+4. 验证用户输入, 提示信息会在 ng-show 属性返回 true 的情况下显示。
+5. 应用状态
+</code></pre><p>ng-model 指令可以为应用数据提供状态值(invalid, dirty, touched, error):</p>
+<pre><code>$valid: true (如果输入的值是合法的则为 true)。
+$invalid: true (如果输入的值是合法的则为 true)。
+$pristine:     表单没有填写记录
+$dirty: false (如果值改变则为 true)。myForm.user.$dirty
+$touched: true (如果通过触屏点击则为 true)。
+$error: js对象，有如下几个值，使用方法：`&lt;span ng-show=&quot;myForm.email.$error.email&quot;&gt;非法的邮箱。&lt;/span&gt;`
+    email
+    max
+    maxlength
+    min
+    minlength
+    number
+    pattern
+    required
+    url
+</code></pre><p>ng-model 指令根据表单域的状态添加/移除以下类：</p>
+<pre><code>ng-empty
+ng-not-empty
+ng-touched
+ng-untouched
+ng-valid
+ng-invalid
+ng-dirty
+ng-pending
+ng-pristine
+</code></pre><h3 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 自定义指令</span></div><div class="line">app.directive(<span class="string">"aco"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        <span class="attr">template</span>: <span class="string">"&lt;h1&gt;Hello ,我是Aco~&lt;/h1&gt;"</span></div><div class="line">    &#125;;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>加 restrict 值 以来打到不同的要求<br>restrict 值可以是以下几种:</p>
+<pre><code>E 作为元素名使用
+A 作为属性使用
+C 作为类名使用 
+M 作为注释使用(注意加上`replace : true,`)
+</code></pre><p>restrict 默认值为 EA, 即可以通过元素名和属性名来调用指令。</p>
+<h3 id="AngularJS-Scope-作用域-模型层"><a href="#AngularJS-Scope-作用域-模型层" class="headerlink" title="AngularJS Scope(作用域)(模型层)"></a>AngularJS Scope(作用域)(模型层)</h3><p>当在控制器中添加 $scope 对象时，视图 (HTML) 可以获取了这些属性。<br>视图中，你不需要添加 $scope 前缀, 只需要添加属性名即可，如： 双括号内部 提供变量名就行。</p>
+<h4 id="Scope-概述"><a href="#Scope-概述" class="headerlink" title="Scope 概述"></a>Scope 概述</h4><p>AngularJS 应用组成如下：</p>
+<pre><code>View(视图), 即 HTML。
+Model(模型), 当前视图中可用的数据。如果你修改了视图，模型和控制器也会相应更新
+Controller(控制器), 即 JavaScript 函数，可以添加或修改属性。
+</code></pre><p>scope 是模型。<br>scope 是一个 JavaScript 对象，带有属性和方法，这些属性和方法可以在视图和控制器中使用。</p>
+<blockquote>
+<p>根作用域</p>
+</blockquote>
+<p>所有的应用都有一个 <code>$rootScope</code>，它可以作用在 <code>ng-app</code> 指令包含的所有 HTML 元素中。<br><code>$rootScope 可作用于整个应用中</code>。是各个 <code>controller</code> 中 scope 的桥梁。用 rootscope 定义的值，可以在各个 controller 中使用。</p>
+<p>创建控制器时，将 <code>$rootScope</code> 作为参数传递，可在应用中使用：</p>
+<h3 id="AngularJS-控制器（控制层）"><a href="#AngularJS-控制器（控制层）" class="headerlink" title="AngularJS 控制器（控制层）"></a>AngularJS 控制器（控制层）</h3><p>ng-controller 指令定义了应用程序控制器。<br>控制器是 <strong>JavaScript 对象</strong>，由标准的 JavaScript <strong>对象的构造函数</strong> 创建。</p>
+<p>控制器的 $scope （相当于作用域、控制范围）用来保存AngularJS Model(模型)的对象。<br>ng-model 指令绑定输入域到控制器的属性（firstName 和 lastName）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app = angular.module(<span class="string">'myApp'</span>, []);</div><div class="line">app.controller(<span class="string">'personCtrl'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope</span>) </span>&#123;</div><div class="line">    $scope.firstName = <span class="string">"John"</span>;</div><div class="line">    $scope.lastName = <span class="string">"Doe"</span>;</div><div class="line">    $scope.fullName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> $scope.firstName + <span class="string">" "</span> + $scope.lastName;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="AngularJS-过滤器"><a href="#AngularJS-过滤器" class="headerlink" title="AngularJS 过滤器"></a>AngularJS 过滤器</h3><blockquote>
+<p>过滤器可以使用一个管道字符（<code>|</code>）添加到表达式和指令中。</p>
+</blockquote>
+<p>AngularJS 过滤器可用于转换数据：</p>
+<pre><code>过滤器                   描述
+currency    格式化数字为货币格式。
+filter          从数组项中选择一个子集。
+lowercase    格式化字符串为小写。
+orderBy          根据某个表达式排列数组。
+uppercase    格式化字符串为大写。
+</code></pre><h4 id="向指令添加过滤器"><a href="#向指令添加过滤器" class="headerlink" title="向指令添加过滤器"></a>向指令添加过滤器</h4><p>过滤器可以通过一个管道字符（<code>|</code>）和一个过滤器添加到指令中。<br>orderBy 过滤器根据表达式排列数组：</p>
+<h4 id="过滤输入"><a href="#过滤输入" class="headerlink" title="过滤输入"></a>过滤输入</h4><p>输入过滤器可以通过一个管道字符（<code>|</code>）和一个过滤器添加到指令中，该过滤器后跟一个冒号和一个模型名称。<br>filter 过滤器从数组中选择一个子集：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-app</span>=<span class="string">"myApp"</span> <span class="attr">ng-controller</span>=<span class="string">"namesCtrl"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ng-model</span>=<span class="string">"test"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">ng-repeat</span>=<span class="string">"x in names | filter:test | orderBy:'country'"</span>&gt;</span></div><div class="line">        &#123;&#123; (x.name | uppercase) + ', ' + x.country &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<ol>
+<li><p>uppercase，lowercase 大小写转换</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; <span class="string">"lower cap string"</span> | uppercase &#125;&#125;   <span class="comment">// 结果：LOWER CAP STRING</span></div><div class="line">&#123;&#123; <span class="string">"TANK is GOOD"</span> | lowercase &#125;&#125;      <span class="comment">// 结果：tank is good</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>date 格式化</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;<span class="number">1490161945000</span> | date:<span class="string">"yyyy-MM-dd HH:mm:ss"</span>&#125;&#125; <span class="comment">// 2017-03-22 13:52:25</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>number 格式化（保留小数）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;<span class="number">149016.1945000</span> | number:<span class="number">2</span>&#125;&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>currency 货币格式化</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; <span class="number">250</span> | currency &#125;&#125;            <span class="comment">// 结果：$250.00</span></div><div class="line">&#123;&#123; <span class="number">250</span> | currency:<span class="string">"RMB ￥ "</span> &#125;&#125;  <span class="comment">// 结果：RMB ￥ 250.00</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>filter 查找<br>输入过滤器可以通过一个管道字符（|）和一个过滤器添加到指令中，该过滤器后跟一个冒号和一个模型名称。<br>filter 过滤器从数组中选择一个子集</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 查找name为iphone的行</span></div><div class="line">&#123;&#123; [&#123;<span class="string">"age"</span>: <span class="number">20</span>,<span class="string">"id"</span>: <span class="number">10</span>,<span class="string">"name"</span>: <span class="string">"iphone"</span>&#125;,</div><div class="line">    &#123;<span class="string">"age"</span>: <span class="number">12</span>,<span class="string">"id"</span>: <span class="number">11</span>,<span class="string">"name"</span>: <span class="string">"sunm xing"</span>&#125;,</div><div class="line">    &#123;<span class="string">"age"</span>: <span class="number">44</span>,<span class="string">"id"</span>: <span class="number">12</span>,<span class="string">"name"</span>: <span class="string">"test abc"</span>&#125;</div><div class="line">    ] | filter:&#123;<span class="string">'name'</span>:<span class="string">'iphone'</span>&#125; &#125;&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li><p>limitTo 截取</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;<span class="string">"1234567890"</span> | limitTo: <span class="number">6</span>&#125;&#125; <span class="comment">// 从前面开始截取6位</span></div><div class="line">&#123;&#123;<span class="string">"1234567890"</span> | limitTo: <span class="number">-4</span>&#125;&#125; <span class="comment">// 从后面开始截取4位</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>orderBy 排序 默认正序 asc ,倒序添加-负号</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">    <span class="comment">// 根id降序排</span></div><div class="line">&#123;&#123; [&#123;<span class="string">"age"</span>: <span class="number">20</span>,<span class="string">"id"</span>: <span class="number">10</span>,<span class="string">"name"</span>: <span class="string">"iphone"</span>&#125;,</div><div class="line">    &#123;<span class="string">"age"</span>: <span class="number">12</span>,<span class="string">"id"</span>: <span class="number">11</span>,<span class="string">"name"</span>: <span class="string">"sunm xing"</span>&#125;,</div><div class="line">    &#123;<span class="string">"age"</span>: <span class="number">44</span>,<span class="string">"id"</span>: <span class="number">12</span>,<span class="string">"name"</span>: <span class="string">"test abc"</span>&#125;</div><div class="line">    ] | orderBy:<span class="string">'-id'</span> &#125;&#125;</div><div class="line"></div><div class="line">    <span class="comment">// 根据id升序排</span></div><div class="line">&#123;&#123; [&#123;<span class="string">"age"</span>: <span class="number">20</span>,<span class="string">"id"</span>: <span class="number">10</span>,<span class="string">"name"</span>: <span class="string">"iphone"</span>&#125;,</div><div class="line">    &#123;<span class="string">"age"</span>: <span class="number">12</span>,<span class="string">"id"</span>: <span class="number">11</span>,<span class="string">"name"</span>: <span class="string">"sunm xing"</span>&#125;,</div><div class="line">    &#123;<span class="string">"age"</span>: <span class="number">44</span>,<span class="string">"id"</span>: <span class="number">12</span>,<span class="string">"name"</span>: <span class="string">"test abc"</span>&#125;</div><div class="line">    ] | orderBy:<span class="string">'id'</span> &#125;&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>8.自定义过滤器<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">app.filter(<span class="string">'reverse'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">//可以注入依赖</span></div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">text</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> text.split(<span class="string">""</span>).reverse().join(<span class="string">""</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="AngularJS-服务-Service"><a href="#AngularJS-服务-Service" class="headerlink" title="AngularJS 服务(Service)"></a>AngularJS 服务(Service)</h3><ol>
+<li><code>$location</code> 服务，它可以返回当前页面的 URL 地址。<code>$scope.myUrl = $location.absUrl();</code>,<strong><code>$location</code> 服务是作为一个参数传递到 controller 中。如果要使用它，需要在 controller 中定义。</strong></li>
+</ol>
+<p>为什么使用服务?<br></p>
+<blockquote>
+<p>在很多服务中，比如 <code>$location</code> 服务，它可以使用 DOM 中存在的对象，类似 <code>window.location</code> 对象，但 <code>window.location</code> 对象在 AngularJS 应用中有一定的局限性。<br>AngularJS 会一直监控应用，处理事件变化， AngularJS 使用 <code>$location</code> 服务比使用 <code>window.location</code> 对象更好。因为这些服务可以获取到 Angular 应用声明周期的每一个阶段，并且和<code>$watch</code> 整合，让 Angular 可以监控应用，处理事件变化。普通的DOM对象则不能在Angular应用声明周期中和应用整合。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>目录</th>
+<th><code>window.location</code></th>
+<th><code>$location.service</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>目的</td>
+<td>允许对当前浏览器位置进行读写操作</td>
+<td>允许对当前浏览器位置进行读写操作</td>
+</tr>
+<tr>
+<td>API</td>
+<td>暴露一个能被读写的对象</td>
+<td>暴露jquery风格的读写器</td>
+</tr>
+<tr>
+<td>是否在AngularJS应用生命周期中和应用整合</td>
+<td>否</td>
+<td>可获取到应用声明周期内的每一个阶段，并且和$watch整合</td>
+</tr>
+<tr>
+<td>是否和HTML5 API的无缝整合</td>
+<td>否</td>
+<td>是（对低级浏览器优雅降级）</td>
+</tr>
+<tr>
+<td>和应用的上下文是否相关</td>
+<td>否，<code>window.location.path</code> 返回 “/docroot/actual/path”</td>
+<td>是，<code>$location.path()</code> 返回 “/actual/path”</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><p><code>$http</code>服务(重点) : 是 AngularJS 中的一个核心服务，用于读取远程服务器的数据。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app = angular.module(<span class="string">'myApp'</span>, []);</div><div class="line">        </div><div class="line">app.controller(<span class="string">'siteCtrl'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope, $http</span>) </span>&#123;</div><div class="line">    $http(&#123;</div><div class="line">        <span class="attr">method</span>: <span class="string">'GET'</span>,</div><div class="line">        <span class="attr">url</span>: <span class="string">'http://139.199.7.254:8080/AcoTest/person.php'</span></div><div class="line">    &#125;).then(<span class="function"><span class="keyword">function</span> <span class="title">successCallback</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">            $scope.names = response.data.person;</div><div class="line">        &#125;, <span class="function"><span class="keyword">function</span> <span class="title">errorCallback</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">        <span class="comment">// 请求失败执行代码</span></div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>自定义服务</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app = angular.module(<span class="string">'myApp'</span>, []);</div><div class="line">app.service(<span class="string">'hexafy'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.myFunc = <span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> x.toString(<span class="number">16</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.filter(<span class="string">'myFormat'</span>,[<span class="string">'hexafy'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">hexafy</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> hexafy.myFunc(x);</div><div class="line">    &#125;;</div><div class="line">&#125;]);</div><div class="line"></div><div class="line">app.controller(<span class="string">'myCtrl'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope</span>) </span>&#123;</div><div class="line">    $scope.counts = [<span class="number">255</span>, <span class="number">251</span>, <span class="number">200</span>];</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="AngularJS-Select-选择框"><a href="#AngularJS-Select-选择框" class="headerlink" title="AngularJS Select(选择框)"></a>AngularJS Select(选择框)</h3><p>在 AngularJS 中我们可以使用 <code>ng-option</code> 指令来创建一个下拉列表，列表项通过对象和数组循环输出。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">ng-init</span>=<span class="string">"selectedName = names[0]"</span> <span class="attr">ng-model</span>=<span class="string">"selectedName"</span> <span class="attr">ng-options</span>=<span class="string">"x for x in names"</span>&gt;</span><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--使用对象型的数据源--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">ng-model</span>=<span class="string">"selectedCar"</span> <span class="attr">ng-options</span>=<span class="string">"y.brand for (x,y) in cars"</span>&gt;</span><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>也可以使用<code>ng-repeat</code> : </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">select</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">ng-repeat</span>=<span class="string">"x in names"</span>&gt;</span>&#123;&#123;x&#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>但是，使用 <code>ng-options</code> 时选项是一个对象，而使用 <code>ng-repeat</code> 时选项是一个字符串，因此，使用 <code>ng-options</code> 更好，也会更灵活。</p>
+<h3 id="AngularJS-表格"><a href="#AngularJS-表格" class="headerlink" title="AngularJS 表格"></a>AngularJS 表格</h3><p>ng-repeat 无敌</p>
+<h3 id="AngularJS-SQL"><a href="#AngularJS-SQL" class="headerlink" title="AngularJS SQL"></a>AngularJS SQL</h3><blockquote>
+<p>需要连接数据库，服务器，之后再测试</p>
+</blockquote>
+<h3 id="AngularJS-HTML-DOM"><a href="#AngularJS-HTML-DOM" class="headerlink" title="AngularJS HTML DOM"></a>AngularJS HTML DOM</h3><ol>
+<li><code>ng-disabled</code> 指令绑定应用程序数据 “mySwitch” 到 HTML 的 disabled 属性。</li>
+<li><p><code>ng-show</code> 指令隐藏或显示一个 HTML 元素。true 为显示，false 为隐藏。ng-show 指令也可以根据 value 的值来显示（隐藏）HTML 元素。eg:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-app</span>=<span class="string">""</span> <span class="attr">ng-init</span>=<span class="string">"hour=13"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">ng-show</span>=<span class="string">"hour &gt; 12"</span>&gt;</span>我是可见的。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><code>ng-hide</code> 指令用于隐藏或显示 HTML 元素。true 为隐藏，false 为显示。反过来就行</p>
+</li>
+</ol>
+<h3 id="AngularJS-事件"><a href="#AngularJS-事件" class="headerlink" title="AngularJS 事件"></a>AngularJS 事件</h3><ol>
+<li>ng-click 指令: 定义了 AngularJS 点击事件。</li>
+</ol>
+<h3 id="AngularJS-模块"><a href="#AngularJS-模块" class="headerlink" title="AngularJS 模块"></a>AngularJS 模块</h3><ol>
+<li><p>创建模块 <code>var app = angular.module(&quot;myApp&quot;, []);</code></p>
+<blockquote>
+<p>在模块定义中 <code>[]</code> 参数用于定义模块的依赖关系。中括号<code>[]</code>表示该模块没有依赖，如果有依赖的话会在中括号写上依赖的模块名字。</p>
+</blockquote>
+</li>
+<li><p>添加控制器</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-app</span>=<span class="string">"myApp"</span> <span class="attr">ng-controller</span>=<span class="string">"myCtrl"</span>&gt;</span></div><div class="line">&#123;&#123; firstName + " " + lastName &#125;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="actionscript"></span></div><div class="line">    <span class="keyword">var</span> app = angular.module(<span class="string">"myApp"</span>, []);</div><div class="line"></div><div class="line">    app.controller(<span class="string">"myCtrl"</span>, <span class="function"><span class="keyword">function</span><span class="params">($scope)</span> </span>&#123;</div><div class="line">        $scope.firstName = <span class="string">"John"</span>;</div><div class="line">        $scope.lastName = <span class="string">"Doe"</span>;</div><div class="line">    &#125;);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>添加指令：可以使用内置的指令，也可以自己创建指令，上面有提到过</p>
+</li>
+<li>模块和控制器包含在 JS 文件中，eg :  “myApp.js” 包含了应用模块的定义程序， “myCtrl.js” 文件包含了控制器：</li>
+<li>函数会影响到全局命名空间</li>
+</ol>
+<blockquote>
+<p>JavaScript 中应避免使用全局函数。因为他们很容易被其他脚本文件覆盖。</p>
+</blockquote>
+<p>AngularJS 模块让所有函数的作用域在该模块下，避免了该问题。</p>
+<p>6.对于 HTML 应用程序，通常建议把所有的脚本都放置在 <code>&lt;body&gt;</code> 元素的最底部。 在我们的实例中，AngularJS 在 <code>&lt;head&gt;</code> 元素中被加载，因为对 angular.module 的调用只能在库加载完成后才能进行。(不理解，我试过，放在页面底部也可以)</p>
+<h3 id="AngularJS-表单"><a href="#AngularJS-表单" class="headerlink" title="AngularJS 表单"></a>AngularJS 表单</h3><p>见例子</p>
+<ol>
+<li>AngularJS 表单是输入控件的集合。</li>
+<li><code>ng-switch</code>, <code>ng-switch-when</code> 指令根据单选按钮的选择结果显示或隐藏 HTML 区域。</li>
+</ol>
+<h3 id="AngularJS-输入验证"><a href="#AngularJS-输入验证" class="headerlink" title="AngularJS 输入验证"></a>AngularJS 输入验证</h3><p>AngularJS 表单和控件可以提供验证功能，并对用户输入的非法数据进行警告。</p>
+<blockquote>
+<p>Note    客户端的验证不能确保用户输入数据的安全，所以服务端的数据验证也是必须的。</p>
+</blockquote>
+<h3 id="AngularJS-API"><a href="#AngularJS-API" class="headerlink" title="AngularJS API"></a>AngularJS API</h3><p>API 意为 Application Programming Interface（应用程序编程接口）。</p>
+<p>AngularJS 全局 API<br>AngularJS 全局 API 用于执行常见任务的 JavaScript 函数集合，如：比较对象, 迭代对象, 转换对象<br>全局 API 函数使用 angular 对象进行访问。</p>
+<pre><code>angular.lowercase()    转换字符串为小写
+angular.uppercase()    转换字符串为大写
+angular.isString()    判断给定的对象是否为字符串，如果是返回 true。
+angular.isNumber()    判断给定的对象是否为数字，如果是返回 true。
+</code></pre><h3 id="AngularJS-包含"><a href="#AngularJS-包含" class="headerlink" title="AngularJS 包含"></a>AngularJS 包含</h3><p>在 AngularJS 中，你可以在 HTML 中包含 HTML 文件。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-include</span>=<span class="string">"'runoob.htm'"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="跨域包含"><a href="#跨域包含" class="headerlink" title="跨域包含"></a>跨域包含</h4><p>默认情况下， ng-include 指令不允许包含其他域名的文件。如果你需要包含其他域名的文件，你需要设置域名访问白名单：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-include</span>=<span class="string">"'http://c.runoob.com/runoobtest/angular_include.php'"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"> </div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="actionscript"></span></div><div class="line"><span class="keyword">var</span> app = angular.module(<span class="string">'myApp'</span>, [])</div><div class="line">app.config(<span class="function"><span class="keyword">function</span><span class="params">($sceDelegateProvider)</span> </span>&#123;</div><div class="line">    $sceDelegateProvider.resourceUrlWhitelist([</div><div class="line">        <span class="string">'http://c.runoob.com/runoobtest/**'</span></div><div class="line">    ]);</div><div class="line">&#125;);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>此外，还需要设置服务端允许跨域访问，<code>Access-Control-Allow-Origin: *</code> 设置方法可参考：<a href="http://www.runoob.com/w3cnote/php-ajax-cross-border.html" target="_blank" rel="external">PHP Ajax 跨域问题最佳解决方案。</a></p>
+<h3 id="AngularJS-动画"><a href="#AngularJS-动画" class="headerlink" title="AngularJS 动画"></a>AngularJS 动画</h3><p>AngularJS 提供了动画效果，可以配合 CSS 使用。AngularJS 使用动画需要引入 angular-animate.min.js 库。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular-animate.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>还需在应用中使用模型 ngAnimate：(如果应用已经设置了应用名，可以把 ngAnimate 直接添加在模型中：)<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">ng-app</span>=<span class="string">"ngAnimate"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app = angular.module(<span class="string">'myApp'</span>, [<span class="string">'ngAnimate'</span>]);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>应用中动画不宜太多，但合适的使用动画可以增加页面的丰富性，也可以更易让用户理解。</p>
+</blockquote>
+<p>ngAnimate 模型可以添加或移除 class 。<br>ngAnimate 模型并不能使 HTML 元素产生动画，但是 ngAnimate 会监测事件，类似隐藏显示 HTML 元素 ，如果事件发生 ngAnimate 就会使用预定义的 class 来设置 HTML 元素的动画。<br>AngularJS 添加/移除 class 的指令:</p>
+<pre><code>ng-show
+ng-hide
+ng-class
+ng-view
+ng-include
+ng-repeat
+ng-if
+ng-switch
+</code></pre><p><code>ng-show</code> 和 <code>ng-hide</code> 指令用于添加或移除 <code>ng-hide class</code> 的值。<br>其他指令会在进入 DOM 会添加 <code>ng-enter</code> 类，移除 DOM 会添加 <code>ng-leave</code> 属性。<br>当 HTML 元素位置改变时，<code>ng-repeat</code> 指令同样可以添加 <code>ng-move</code> 类 。<br>此外， 在动画完成后，HTML 元素的类集合将被移除。例如： <code>ng-hide</code> 指令会添加一下类：</p>
+<pre><code>ng-animate
+ng-hide-animate
+ng-hide-add (如果元素将被隐藏)
+ng-hide-remove (如果元素将显示)
+ng-hide-add-active (如果元素将隐藏)
+ng-hide-remove-active (如果元素将显示)
+</code></pre><h3 id="AngularJS-依赖注入"><a href="#AngularJS-依赖注入" class="headerlink" title="AngularJS 依赖注入"></a>AngularJS 依赖注入</h3><p>wiki 上的解释是：</p>
+<blockquote>
+<p>依赖注入（Dependency Injection，简称DI）是一种软件设计模式，在这种模式下，一个或更多的依赖（或服务）被注入（或者通过引用传递）到一个独立的对象（或客户端）中，然后成为了该客户端状态的一部分。</p>
+</blockquote>
+<p>该模式分离了客户端依赖本身行为的创建，这使得程序设计变得松耦合，并遵循了依赖反转和单一职责原则。与服务定位器模式形成直接对比的是，它允许客户端了解客户端如何使用该系统找到依赖</p>
+<blockquote>
+<p>一句话 — 没事你不要来找我，有事我会去找你。</p>
+</blockquote>
+<p>AngularJS 提供很好的依赖注入机制。以下5个核心组件用来作为依赖注入：</p>
+<ol>
+<li>value</li>
+<li>factory</li>
+<li>service</li>
+<li>provider</li>
+<li>constant</li>
+</ol>
+<h4 id="value"><a href="#value" class="headerlink" title="value"></a>value</h4><p>Value 是一个简单的 javascript 对象，用于向控制器传递值（配置阶段）：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 创建 value 对象 "defaultInput" 并传递数据</span></div><div class="line">mainApp.value(<span class="string">"defaultInput"</span>, <span class="number">5</span>);</div></pre></td></tr></table></figure></p>
+<h4 id="factory"><a href="#factory" class="headerlink" title="factory"></a>factory</h4><p>factory 是一个函数用于返回值。在 service 和 controller 需要时创建。<br>通常我们使用 factory 函数来计算或返回值。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 创建 factory "MathService" 用于两数的乘积 provides a method multiply to return multiplication of two numbers</span></div><div class="line">mainApp.factory(<span class="string">'MathService'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="keyword">var</span> factory = &#123;&#125;;</div><div class="line">   </div><div class="line">   factory.multiply = <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> a * b</div><div class="line">   &#125;</div><div class="line">   <span class="keyword">return</span> factory;</div><div class="line">&#125;); </div><div class="line"></div><div class="line"><span class="comment">// 在 service 中注入 factory "MathService"</span></div><div class="line">mainApp.service(<span class="string">'CalcService'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">MathService</span>)</span>&#123;</div><div class="line">   <span class="keyword">this</span>.square = <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> MathService.multiply(a,a);</div><div class="line">   &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h4 id="provider"><a href="#provider" class="headerlink" title="provider"></a>provider</h4><p>AngularJS 中通过 <code>provider</code> 创建一个 <code>service</code>、<code>factory</code>等(配置阶段)。<br>Provider 中提供了一个 <code>factory</code> 方法 <code>get()</code>，它用于返回 <code>value/service/factory</code>。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 使用 provider 创建 service 定义一个方法用于计算两数乘积</span></div><div class="line">mainApp.config(<span class="function"><span class="keyword">function</span>(<span class="params">$provide</span>) </span>&#123;</div><div class="line">   $provide.provider(<span class="string">'MathService'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">this</span>.$get = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">         <span class="keyword">var</span> factory = &#123;&#125;;  </div><div class="line">         </div><div class="line">         factory.multiply = <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">            <span class="keyword">return</span> a * b; </div><div class="line">         &#125;</div><div class="line">         <span class="keyword">return</span> factory;</div><div class="line">      &#125;;</div><div class="line">   &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">mainApp.service(<span class="string">'CalcService'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">MathService</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.square = <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> MathService.multiply(a,a);</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">         </div><div class="line">mainApp.controller(<span class="string">'CalcController'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope, CalcService, defaultInput</span>) </span>&#123;</div><div class="line">    $scope.number = defaultInput;</div><div class="line">    $scope.result = CalcService.square($scope.number);</div><div class="line"></div><div class="line">    $scope.square = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        $scope.result = CalcService.square($scope.number);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h4 id="constant"><a href="#constant" class="headerlink" title="constant"></a>constant</h4><p>constant(常量)用来在配置阶段传递数值，注意这个常量在配置阶段是不可用的。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mainApp.constant(<span class="string">"configParam"</span>, <span class="string">"constant value"</span>);</div></pre></td></tr></table></figure></p>
+<ol>
+<li>一个对别人有依赖的东西，它想要单独测试，就需要在依赖项齐备的情况下进行。如果我们在运行时注入，就可以减少这种依赖</li>
+<li>参数由定义方决定</li>
+<li>与import还不完全一样</li>
+</ol>
+<h3 id="AngularJS-路由"><a href="#AngularJS-路由" class="headerlink" title="AngularJS 路由"></a>AngularJS 路由</h3><p>AngularJS 路由允许我们通过不同的 URL 访问不同的内容。<br>通过 AngularJS 可以实现多视图的单页Web应用（single page web application，SPA）。<br>通常我们的URL形式为 <code>http://runoob.com/first/page</code>，但在单页Web应用中 AngularJS 通过 <strong># +</strong> 标记 实现，例如：</p>
+<pre><code>http://runoob.com/#/first
+http://runoob.com/#/second
+http://runoob.com/#/third
+</code></pre><blockquote>
+<p>需要载入<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://apps.bdimg.com/libs/angular-route/1.3.13/angular-route.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechatAcogzh.jpg" alt="Aco wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎扫描上方微信公众号，订阅博客获得实时动态！</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我创作出更好的作品！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Aco WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="Aco Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Aco
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://www.taoxiaolin.com/2017/06/26/AngularJS浅谈/" title="AngularJS浅谈">http://www.taoxiaolin.com/2017/06/26/AngularJS浅谈/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外均为原创，采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请在文章开头明显位置注明原文链接和作者等相关信息，明确指出修改（如有），并通过E-mail等方式告知，谢谢合作！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端框架/" rel="tag"># 前端框架</a>
+          
+            <a href="/tags/学习记录/" rel="tag"># 学习记录</a>
+          
+            <a href="/tags/AngularJS/" rel="tag"># AngularJS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/07/【Css回顾】系列/" rel="next" title="【Css回顾】你还记得哪些？">
+                <i class="fa fa-chevron-left"></i> 【Css回顾】你还记得哪些？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/28/【总结】实习半个月以来的收获和感想/" rel="prev" title="【总结】实习半个月以来的收获和感想">
+                【总结】实习半个月以来的收获和感想 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODI4OS80ODYx"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Aco" />
+          <p class="site-author-name" itemprop="name">Aco</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Change-TheWorld/" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.gitbook.com/@leviding" target="_blank" title="GitBook">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  GitBook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:2973978759@qq.com" target="_blank" title="E-mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                  E-mail
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/AcoExlporer" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Aco" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/" target="_blank" title="Linkedin">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  Linkedin
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/" target="_blank" title="Douban">
+                  
+                    <i class="fa fa-fw fa-coffee"></i>
+                  
+                  Douban
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.taoxiaolin.com/files/中国地质大学(武汉)-陶孝林-男-Web前端开发简历.pdf" target="_blank" title="我的简历">
+                  
+                    <i class="fa fa-fw fa-plane"></i>
+                  
+                  我的简历
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://juejin.im/user/591af0e944d904006c7f28e9/tag" target="_blank" title="掘金主页">
+                  
+                    <i class="fa fa-fw fa-magnet"></i>
+                  
+                  掘金主页
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/AcoExplorer/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://zhuanlan.zhihu.com/dingxuewen" target="_blank" title="知乎专栏">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎专栏
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              编程学习
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.topcoder.com/" title="Topcoder" target="_blank">Topcoder</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://developers.google.cn/" title="Google Dev" target="_blank">Google Dev</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.runoob.com/" title="RUNOOB" target="_blank">RUNOOB</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.freecodecamp.com/" title="Freecodecamp" target="_blank">Freecodecamp</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.lintcode.com/zh-cn/" title="LintCode" target="_blank">LintCode</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://codeforces.com/" title="Codeforces" target="_blank">Codeforces</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://leetcode.com/" title="LeetCode" target="_blank">LeetCode</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://docs.pythontab.com/" title="在线编程手册" target="_blank">在线编程手册</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AnjularJS"><span class="nav-number">1.</span> <span class="nav-text">AnjularJS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础"><span class="nav-number">1.1.</span> <span class="nav-text">基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AngularJS-应用"><span class="nav-number">1.2.</span> <span class="nav-text">AngularJS 应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS-表达式-与-JavaScript-表达式"><span class="nav-number">1.2.1.</span> <span class="nav-text">AngularJS 表达式 与 JavaScript 表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ng-model-指令"><span class="nav-number">1.2.2.</span> <span class="nav-text">ng-model 指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义指令"><span class="nav-number">1.2.3.</span> <span class="nav-text">自定义指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS-Scope-作用域-模型层"><span class="nav-number">1.2.4.</span> <span class="nav-text">AngularJS Scope(作用域)(模型层)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Scope-概述"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">Scope 概述</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS-控制器（控制层）"><span class="nav-number">1.2.5.</span> <span class="nav-text">AngularJS 控制器（控制层）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS-过滤器"><span class="nav-number">1.2.6.</span> <span class="nav-text">AngularJS 过滤器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#向指令添加过滤器"><span class="nav-number">1.2.6.1.</span> <span class="nav-text">向指令添加过滤器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过滤输入"><span class="nav-number">1.2.6.2.</span> <span class="nav-text">过滤输入</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS-服务-Service"><span class="nav-number">1.2.7.</span> <span class="nav-text">AngularJS 服务(Service)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS-Select-选择框"><span class="nav-number">1.2.8.</span> <span class="nav-text">AngularJS Select(选择框)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS-表格"><span class="nav-number">1.2.9.</span> <span class="nav-text">AngularJS 表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS-SQL"><span class="nav-number">1.2.10.</span> <span class="nav-text">AngularJS SQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS-HTML-DOM"><span class="nav-number">1.2.11.</span> <span class="nav-text">AngularJS HTML DOM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS-事件"><span class="nav-number">1.2.12.</span> <span class="nav-text">AngularJS 事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS-模块"><span class="nav-number">1.2.13.</span> <span class="nav-text">AngularJS 模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS-表单"><span class="nav-number">1.2.14.</span> <span class="nav-text">AngularJS 表单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS-输入验证"><span class="nav-number">1.2.15.</span> <span class="nav-text">AngularJS 输入验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS-API"><span class="nav-number">1.2.16.</span> <span class="nav-text">AngularJS API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS-包含"><span class="nav-number">1.2.17.</span> <span class="nav-text">AngularJS 包含</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#跨域包含"><span class="nav-number">1.2.17.1.</span> <span class="nav-text">跨域包含</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS-动画"><span class="nav-number">1.2.18.</span> <span class="nav-text">AngularJS 动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS-依赖注入"><span class="nav-number">1.2.19.</span> <span class="nav-text">AngularJS 依赖注入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#value"><span class="nav-number">1.2.19.1.</span> <span class="nav-text">value</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#factory"><span class="nav-number">1.2.19.2.</span> <span class="nav-text">factory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#provider"><span class="nav-number">1.2.19.3.</span> <span class="nav-text">provider</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#constant"><span class="nav-number">1.2.19.4.</span> <span class="nav-text">constant</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS-路由"><span class="nav-number">1.2.20.</span> <span class="nav-text">AngularJS 路由</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  Copyright&nbsp;&copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Aco</span>
+</div>
+
+
+<div class="powered-by">
+  Power by <a class="theme-link" href="https://hexo.io">Hexo</a> 
+</div>
+
+<div class="theme-info">
+  Theme
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank">
+    Next
+  </a>
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="http://www.miitbeian.gov.cn/" target="_blank">吉ICP备17001365号</a></span>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <span>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Xn27UH4JdxzmcJL6NYWy9Kby-gzGzoHsz", "tQxUDf9p2bh05b4lGhaNTJFc");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <!-- 小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+  <!--卖萌-->
+  <script type="text/javascript" src="/js/src/dytitle.js"></script>
+  
+  <a href="https://github.com/Change-TheWorld/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+    
+</body>
+</html>
